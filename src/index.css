@@ -1,0 +1,53 @@
+.message {
+    font-family: sans-serif;
+    color: lightslategrey;
+    font-size: 0.75em;
+    padding: 0.5em;
+}
+
+.message .contents {
+    color: black;
+    font-size: 1.5em;
+    margin: 0.25em 0em 0.25em 0em;
+}
+
+.message.own-message {
+    margin: 0.75em;
+    border: 1px solid grey;
+
+}
+
+.container {
+    max-width: 600px;
+    border: 1px solid grey;
+}
+
+.send-bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: lightgrey;
+    padding: 0.5em;
+    height: 3em;
+}
+
+.send-bar textarea {
+    flex-grow: 4;
+    font-family: sans-serif;
+}
+
+.send-bar textarea:focus {
+    outline: none;
+}
+
+.send-bar button {
+    flex-grow: 1;
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+    font-family: sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+	cursor: pointer;
+	outline: inherit;
+}

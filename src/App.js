@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Chat from './components/Chat';
 import SendBar from './components/SendBar';
 import SockJsClient from 'react-stomp';
+import './index.css';
 
 const SOCKET_URL = 'http://localhost:8080/ws-chat/';
 
 const App = () => {
     const [messages, setMessages] = useState([]);
-    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [nameSubmitted, setNameSubmitted] = useState(false);
 
     const fetchMessages = () => {
@@ -21,7 +22,7 @@ const App = () => {
         fetchMessages();
     }, [])
 
-    const onNameChange = e => setName(e.target.value);
+    const onNameChange = e => setUsername(e.target.value);
 
     const onSubmitName = () => setNameSubmitted(true);
 
@@ -29,14 +30,14 @@ const App = () => {
         return (
             <div>
                 <label>{'Please enter your name to start chat: '}</label>
-                <input value={name} onChange={onNameChange} />
+                <input value={username} onChange={onNameChange} />
                 <button onClick={onSubmitName}>{'Enter'}</button>
             </div>
         );
     }
 
     return (
-        <div>
+        <div className="container">
             <SockJsClient
                 url={SOCKET_URL}
                 topics={['/topic/chat']}
@@ -44,8 +45,8 @@ const App = () => {
                 onDisconnect={() => console.log('disconnected')}
                 onMessage={message => setMessages([...messages, message])}
             />
-            <Chat {...{ name, messages }} />
-            <SendBar {...{ name }} />
+            <Chat {...{ username, messages }} />
+            <SendBar {...{ username }} />
         </div>
     );
     

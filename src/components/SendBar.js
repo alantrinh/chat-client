@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import '../index.css';
 
-const SendBar = ({ name }) => {
+const SendBar = ({ username: name }) => {
     const [message, setMessage] = useState('');
 
     const onMessageChange = e => setMessage(e.target.value);
@@ -17,8 +18,8 @@ const SendBar = ({ name }) => {
     }
 
     return (
-        <div>
-            <input value={message} onChange={onMessageChange} />
+        <div className="send-bar">
+            <textarea value={message} onChange={onMessageChange} />
             <button onClick={onSendClick}>{'Send'}</button>
         </div>
     );
